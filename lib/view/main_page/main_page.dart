@@ -12,18 +12,32 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final header = _buildHeader(context);
 
+    final fab = Builder(
+      builder: (context) => FloatingActionButton(
+        child: Icon(Icons.drafts),
+        onPressed: () {
+          Scaffold.of(context).showSnackBar(SnackBar(
+            content: Text('Replace with your own action'),
+          ));
+        },
+      ),
+    );
+
+    final tabView = TabBarView(
+      children: [
+        Feed(),
+        Story(),
+        Following(),
+        Followers(),
+      ],
+    );
+
     return DefaultTabController(
       length: _tabCount,
       child: Scaffold(
         appBar: header,
-        body: TabBarView(
-          children: [
-            Feed(),
-            Story(),
-            Following(),
-            Followers(),
-          ],
-        ),
+        body: tabView,
+        floatingActionButton: fab,
       ),
     );
   }

@@ -8,7 +8,7 @@ class App extends StatelessWidget {
       title: 'Tweeter',
       theme: AppTheme.define(),
       routes: AppRoutes.define(),
-      initialRoute: AppRoutes.mainPage,
+      initialRoute: AppRoutes.authPage,
     );
 
     return app;
