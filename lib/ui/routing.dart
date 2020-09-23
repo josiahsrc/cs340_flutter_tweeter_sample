@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tweeter/ui/ui.dart';
 
-class Routes {
-  const Routes._();
+class AppRoutes {
+  const AppRoutes._();
 
   static const String home = '/';
   static const String signIn = '/sign-in-view';
