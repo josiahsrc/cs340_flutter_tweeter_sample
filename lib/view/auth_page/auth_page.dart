@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-class SignInView extends StatelessWidget {
+import 'sign_in.dart';
+import 'sign_up.dart';
+
+class AuthPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {}
 }
