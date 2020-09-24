@@ -1,7 +1,8 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:tweeter/model/model.dart';
 
-class FollowingRequest {
+class FollowingRequest extends Equatable {
   final User follower;
   final User lastFollowee;
   final int limit;
@@ -12,11 +13,6 @@ class FollowingRequest {
     @required this.limit,
   }) : super();
 
-  Map<String, dynamic> toJson() {
-    return {
-      'follower': follower.toJson(),
-      'lastFollowee': lastFollowee.toJson(),
-      'limit': limit,
-    };
-  }
+  @override
+  List<Object> get props => [follower, lastFollowee, limit];
 }

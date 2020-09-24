@@ -1,21 +1,16 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:tweeter/model/model.dart';
 
-class LoginResponse {
+class LoginResponse extends Equatable {
   final User user;
   final AuthToken token;
 
-  LoginResponse({
+  const LoginResponse({
     @required this.user,
     @required this.token,
   }) : super();
 
-  factory LoginResponse.fromJson(
-    Map<String, dynamic> json,
-  ) {
-    return LoginResponse(
-      user: User.fromJson(json['user']),
-      token: AuthToken.fromJson(json['token']),
-    );
-  }
+  @override
+  List<Object> get props => [user, token];
 }

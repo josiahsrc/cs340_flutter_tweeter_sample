@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class LoginRequest {
+class LoginRequest extends Equatable {
   final String handle;
   final String password;
 
@@ -9,10 +10,6 @@ class LoginRequest {
     @required this.password,
   }) : super();
 
-  Map<String, dynamic> toJson() {
-    return {
-      'handle': handle,
-      'password': password,
-    };
-  }
+  @override
+  List<Object> get props => [handle, password];
 }

@@ -15,24 +15,6 @@ class User extends Equatable {
     this.photoURL,
   }) : super();
 
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
-      firstName: json['firstName'],
-      lastName: json['lastName'],
-      handle: json['handle'],
-      photoURL: json['photoURL'],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'firstName': firstName,
-      'lastName': lastName,
-      'handle': handle,
-      'photoURL': photoURL,
-    };
-  }
-
   @override
   List<Object> get props => [
         firstName,
