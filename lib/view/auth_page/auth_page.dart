@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'login.dart';
 import 'register.dart';
@@ -56,12 +57,15 @@ class AuthPage extends StatelessWidget {
 
     return PreferredSize(
       preferredSize: Size.fromHeight(200),
-      child: Material(
-        color: theme.primaryColor,
-        child: SafeArea(
-          child: DefaultTextStyle(
-            style: theme.primaryTextTheme.bodyText1,
-            child: headerContent,
+      child: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.light,
+        child: Material(
+          color: theme.primaryColor,
+          child: SafeArea(
+            child: DefaultTextStyle(
+              style: theme.primaryTextTheme.bodyText1,
+              child: headerContent,
+            ),
           ),
         ),
       ),

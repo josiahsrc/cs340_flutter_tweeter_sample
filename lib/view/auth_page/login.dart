@@ -32,23 +32,9 @@ class _LoginState extends State<Login> implements LoginView {
       );
     }
 
-    final handleTextField = TextFormField(
-      decoration: InputDecoration(
-        labelText: 'Handle',
-        alignLabelWithHint: true,
-      ),
-    );
-
-    final passwordTextField = TextFormField(
-      obscureText: true,
-      decoration: InputDecoration(
-        labelText: 'Password',
-        alignLabelWithHint: true,
-      ),
-    );
-
     final loginButton = RaisedButton(
-      // TODO: use data from the form.
+      // TODO: 
+      // Use data from a login form to call the login function.
       onPressed: () => presenter.onLogIn(
         handle: 'johndoe',
         password: 'password',
@@ -56,15 +42,14 @@ class _LoginState extends State<Login> implements LoginView {
       child: Text('Log in'),
     );
 
+    // TODO:
+    // Actually display a login form here.
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Spacer(flex: 1),
-          handleTextField,
-          passwordTextField,
-          Spacer(flex: 4),
+          Spacer(flex: 8),
           loginButton,
           Spacer(flex: 1),
         ],

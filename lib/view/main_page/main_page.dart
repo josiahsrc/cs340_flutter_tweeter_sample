@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:tweeter/view/routing.dart';
 
 import 'feed.dart';
 import 'followers.dart';
@@ -44,6 +46,7 @@ class MainPage extends StatelessWidget {
 
   Widget _buildHeader(BuildContext context) {
     final theme = Theme.of(context);
+    final nav = Navigator.of(context);
 
     final tabs = TabBar(
       tabs: [
@@ -60,10 +63,13 @@ class MainPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Spacer(),
-          RaisedButton.icon(
-            onPressed: () {},
+          IconButton(
+            // TODO:
+            // Use a presenter to actually logout the user and THEN
+            // tell the view to navigate back to the auth page.
+            color: theme.primaryIconTheme.color,
+            onPressed: () => nav.pushReplacementNamed(AppRoutes.authPage),
             icon: Icon(Icons.exit_to_app),
-            label: Text('Log out'),
           ),
         ],
       ),
@@ -118,8 +124,8 @@ class MainPage extends StatelessWidget {
     final headerContent = Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        userInformation,
         actions,
+        userInformation,
         Spacer(),
         tabs,
       ],
@@ -127,12 +133,15 @@ class MainPage extends StatelessWidget {
 
     return PreferredSize(
       preferredSize: Size.fromHeight(200),
-      child: Material(
-        color: theme.primaryColor,
-        child: SafeArea(
-          child: DefaultTextStyle(
-            style: theme.primaryTextTheme.bodyText1,
-            child: headerContent,
+      child: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.light,
+        child: Material(
+          color: theme.primaryColor,
+          child: SafeArea(
+            child: DefaultTextStyle(
+              style: theme.primaryTextTheme.bodyText1,
+              child: headerContent,
+            ),
           ),
         ),
       ),
