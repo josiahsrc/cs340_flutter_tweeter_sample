@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 abstract class SignInView {
   void setIsLoading(bool value);
   void navigateToMainPage();
@@ -6,7 +8,7 @@ abstract class SignInView {
 
 class SignInPresenter {
   SignInPresenter({
-    this.view,
+    @required this.view,
   });
 
   final SignInView view;

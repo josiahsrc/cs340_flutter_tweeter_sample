@@ -80,8 +80,9 @@ class MainPage extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 30,
-                backgroundImage:
-                    NetworkImage('https://picsum.photos/250?image=9'),
+                backgroundImage: NetworkImage(
+                  'https://picsum.photos/250?image=9',
+                ),
               ),
               Text(
                 'John Doe',
