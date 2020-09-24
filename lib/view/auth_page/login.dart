@@ -14,9 +14,7 @@ class _LoginState extends State<Login> implements LoginView {
   @override
   Widget build(BuildContext context) {
     return Provider(
-      create: (context) => LoginPresenter(
-        view: this
-      ),
+      create: (context) => LoginPresenter(view: this),
       child: Builder(
         builder: _buildView,
       ),
@@ -33,7 +31,7 @@ class _LoginState extends State<Login> implements LoginView {
     }
 
     final loginButton = RaisedButton(
-      // TODO: 
+      // TODO:
       // Use data from a login form to call the login function.
       onPressed: () => presenter.onLogIn(
         handle: 'johndoe',
@@ -47,11 +45,12 @@ class _LoginState extends State<Login> implements LoginView {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Spacer(flex: 8),
+          Text('An almost completely unimplemented login view. Replace '
+              'this with your own and update the code in the LoginService.'),
           loginButton,
-          Spacer(flex: 1),
         ],
       ),
     );
