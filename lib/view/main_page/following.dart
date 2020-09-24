@@ -9,7 +9,7 @@ class Following extends StatefulWidget {
 }
 
 class _FollowingState extends State<Following> implements FollowingView {
-  final List<User> _users = [];
+  List<User> _following = []; // TODO actually use this to show the following.
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +41,15 @@ class _FollowingState extends State<Following> implements FollowingView {
 
   @override
   void setFollowingList(List<User> users) {
-    // TODO: implement setFollowingList
+    setState(() {
+      _following = users;
+    });
+  }
+
+  @override
+  void displayErrorMessage(String error) {
+    Scaffold.of(context).showSnackBar(SnackBar(
+      content: Text(error),
+    ));
   }
 }

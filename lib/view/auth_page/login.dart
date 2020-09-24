@@ -48,7 +48,11 @@ class _LoginState extends State<Login> implements LoginView {
     );
 
     final loginButton = RaisedButton(
-      onPressed: () => presenter.onLogIn(),
+      // TODO: use data from the form.
+      onPressed: () => presenter.onLogIn(
+        handle: 'johndoe',
+        password: 'password',
+      ),
       child: Text('Log in'),
     );
 

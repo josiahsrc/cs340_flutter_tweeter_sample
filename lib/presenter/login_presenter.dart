@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tweeter/model/model.dart';
 
 abstract class LoginView {
   void setIsLoading(bool value);
@@ -12,12 +13,24 @@ class LoginPresenter {
   });
 
   final LoginView view;
+  final LoginService _service = LoginService();
 
-  Future<void> onLogIn() async {
+  Future<void> onLogIn({
+    String handle,
+    String password,
+  }) async {
     view.setIsLoading(true);
 
     try {
-      await Future.delayed(Duration(seconds: 1));
+      final response = await _service.login(
+        LoginRequest(
+          handle: handle,
+          password: password,
+        ),
+      );
+
+      print(response.user.handle);
+
       view.setIsLoading(false);
       view.navigateToMainPage();
     } on Error catch (e) {

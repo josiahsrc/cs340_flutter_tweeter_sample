@@ -6,32 +6,47 @@ class ServerFacade {
   factory ServerFacade() {
     return _instance;
   }
-  
+
   const ServerFacade._();
 
-  // final 
+  Future<LoginResponse> loginResponse(LoginRequest request) async {
+    // TODO: generate this data instead of hardcoding the response!
+    await Future.delayed(Duration(seconds: 1));
+    return LoginResponse(
+      user: User(
+        firstName: 'John',
+        lastName: 'Doe',
+        handle: 'johndoe',
+        photoURL: '',
+      ),
+      token: AuthToken(),
+    );
+  }
 
-  Future<FollowingResponse> getFollowees(FollowingRequest request) async {
-  //   assert(request.limit >= 0);
-  //   assert(request.follower != null);
-  // }
-
-  //   Map<User, List<User>> initializeFollowees() {
-  //       Map<User, List<User>> followeesByFollower = {};
-  //       List<Follow> follows = getFollowGenerator().generateUsersAndFollows(100,
-  //               0, 50, FollowGenerator.Sort.FOLLOWER_FOLLOWEE);
-
-  //       for(Follow follow in follows) {
-  //           List<User> followees = followeesByFollower.get(follow.getFollower());
-
-  //           if(followees == null) {
-  //               followees = new ArrayList<>();
-  //               followeesByFollower.put(follow.getFollower(), followees);
-  //           }
-
-  //           followees.add(follow.getFollowee());
-  //       }
-
-  //       return followeesByFollower;
-    }
+  Future<FollowingResponse> getFollowing(FollowingRequest request) async {
+    // TODO: generate this data instead of hardcoding the response!
+    await Future.delayed(Duration(seconds: 1));
+    return FollowingResponse(
+      followees: [
+        User(
+          firstName: 'Jane',
+          lastName: 'Johnson',
+          handle: 'followee1',
+          photoURL: '',
+        ),
+        User(
+          firstName: 'Jane',
+          lastName: 'Johnson',
+          handle: 'followee2',
+          photoURL: '',
+        ),
+        User(
+          firstName: 'Jane',
+          lastName: 'Johnson',
+          handle: 'followee3',
+          photoURL: '',
+        ),
+      ],
+    );
+  }
 }
