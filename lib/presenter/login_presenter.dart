@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-abstract class SignInView {
+abstract class LoginView {
   void setIsLoading(bool value);
   void navigateToMainPage();
   void displayErrorMessage(String message);
 }
 
-class SignInPresenter {
-  SignInPresenter({
+class LoginPresenter {
+  LoginPresenter({
     @required this.view,
   });
 
-  final SignInView view;
+  final LoginView view;
 
   Future<void> onLogIn() async {
     view.setIsLoading(true);

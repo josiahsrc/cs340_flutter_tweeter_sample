@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'sign_in.dart';
-import 'sign_up.dart';
+import 'login.dart';
+import 'register.dart';
 
 class AuthPage extends StatelessWidget {
   static final _tabCount = 2;
@@ -12,8 +12,8 @@ class AuthPage extends StatelessWidget {
 
     final tabView = TabBarView(
       children: [
-        SignIn(),
-        SignUp(),
+        Login(),
+        Register(),
       ],
     );
 
@@ -47,8 +47,8 @@ class AuthPage extends StatelessWidget {
         Spacer(),
         TabBar(
           tabs: [
-            Tab(child: Text('Sign In')),
-            Tab(child: Text('Sign Up')),
+            Tab(child: Text('Login')),
+            Tab(child: Text('Register')),
           ],
         ),
       ],

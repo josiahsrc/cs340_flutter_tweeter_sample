@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class SignInRequest {
+class LoginRequest {
   final String handle;
   final String password;
 
-  SignInRequest({
+  LoginRequest({
     @required this.handle,
     @required this.password,
   }) : super();

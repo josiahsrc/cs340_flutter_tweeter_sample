@@ -3,18 +3,18 @@ import 'package:provider/provider.dart';
 import 'package:tweeter/presenter/presenter.dart';
 import 'package:tweeter/view/routing.dart';
 
-class SignIn extends StatefulWidget {
+class Login extends StatefulWidget {
   @override
-  _SignInState createState() => _SignInState();
+  _LoginState createState() => _LoginState();
 }
 
-class _SignInState extends State<SignIn> implements SignInView {
+class _LoginState extends State<Login> implements LoginView {
   bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
     return Provider(
-      create: (context) => SignInPresenter(
+      create: (context) => LoginPresenter(
         view: this
       ),
       child: Builder(
@@ -24,7 +24,7 @@ class _SignInState extends State<SignIn> implements SignInView {
   }
 
   Widget _buildView(BuildContext context) {
-    final presenter = Provider.of<SignInPresenter>(context);
+    final presenter = Provider.of<LoginPresenter>(context);
 
     if (_isLoading) {
       return Center(
