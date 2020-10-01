@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'login.dart';
-import 'register.dart';
 
 class AuthPage extends StatelessWidget {
   static final _tabCount = 2;
@@ -11,7 +10,7 @@ class AuthPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.dark,
-          child: Scaffold(
+      child: Scaffold(
         body: Center(
           child: Login(),
         ),

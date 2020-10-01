@@ -2,11 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tweeter/view/routing.dart';
 
-import 'feed.dart';
-import 'followers.dart';
-import 'following.dart';
-import 'story.dart';
-
 class MainPage extends StatelessWidget {
   static final _tabCount = 4;
 
@@ -25,12 +20,14 @@ class MainPage extends StatelessWidget {
       ),
     );
 
+    // TODO: Create new widgets for the story, feed, follower, following
+    // and place them here.
     final tabView = TabBarView(
       children: [
-        Feed(),
-        Story(),
-        Following(),
-        Followers(),
+        Container(),
+        Container(),
+        Container(),
+        Container(),
       ],
     );
 

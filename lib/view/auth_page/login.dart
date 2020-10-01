@@ -1,30 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:tweeter/presenter/presenter.dart';
+import 'package:tweeter/model/model.dart';
 import 'package:tweeter/view/routing.dart';
 
-class Login extends StatefulWidget {
-  @override
-  _LoginState createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> implements LoginView {
-  bool _isLoading = false;
-
+class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Provider(
-      create: (context) => LoginPresenter(view: this),
-      child: Builder(
-        builder: _buildView,
-      ),
+    // Use the auth bloc to rebuild the view.
+    return BlocConsumer<AuthCubit, AuthState>(
+      listener: (context, state) {
+        // If the state reported an error, display an error to the user.
+        if (state.friendlyError.isNotEmpty) {
+          Scaffold.of(context).showSnackBar(SnackBar(
+            content: Text(state.friendlyError),
+          ));
+        }
+
+        // If the current user isn't null, then we signed in successfully.
+        // Navigate to the home page.
+        if (state.currentUser != null) {
+          print('Login successful');
+          Navigator.of(context).pushReplacementNamed(AppRoutes.mainPage);
+        }
+      },
+      builder: _buildView,
     );
   }
 
-  Widget _buildView(BuildContext context) {
-    final presenter = Provider.of<LoginPresenter>(context);
+  Widget _buildView(BuildContext context, AuthState state) {
+    final authBloc = context.bloc<AuthCubit>();
 
-    if (_isLoading) {
+    // If the auth state is loading, display a loading bar.
+    if (state.isLoading) {
       return Center(
         child: CircularProgressIndicator(),
       );
@@ -33,7 +41,7 @@ class _LoginState extends State<Login> implements LoginView {
     final loginButton = RaisedButton(
       // TODO:
       // Use data from a login form to call the login function.
-      onPressed: () => presenter.onLogIn(
+      onPressed: () => authBloc.loginUser(
         handle: 'johndoe',
         password: 'password',
       ),
@@ -54,24 +62,5 @@ class _LoginState extends State<Login> implements LoginView {
         ],
       ),
     );
-  }
-
-  @override
-  void displayErrorMessage(String message) {
-    Scaffold.of(context).showSnackBar(SnackBar(
-      content: Text(message),
-    ));
-  }
-
-  @override
-  void navigateToMainPage() {
-    Navigator.of(context).pushReplacementNamed(AppRoutes.mainPage);
-  }
-
-  @override
-  void setIsLoading(bool value) {
-    setState(() {
-      _isLoading = value;
-    });
   }
 }
