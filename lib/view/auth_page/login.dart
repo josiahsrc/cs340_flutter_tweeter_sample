@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 import 'package:tweeter/model/model.dart';
 import 'package:tweeter/view/routing.dart';
 
@@ -19,7 +18,7 @@ class Login extends StatelessWidget {
 
         // If the current user isn't null, then we signed in successfully.
         // Navigate to the home page.
-        if (state.currentUser != null) {
+        if (context.repository<UserRepository>().getCurrentUser() != null) {
           print('Login successful');
           Navigator.of(context).pushReplacementNamed(AppRoutes.mainPage);
         }
